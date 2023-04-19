@@ -1,4 +1,4 @@
-package recursionGet;
+package recursion.advanced;
 
 import java.util.ArrayList;
 
@@ -26,6 +26,48 @@ public class SubSequence {
 
 		System.out.println(subSequenceWithAscii.size());
 
+		System.out.println();
+		System.out.println("Print SubSequences ================>");
+		printSubSequence("abc", "");
+		
+		System.out.println();
+		System.out.println("Print SubSequences ================>");
+		printSubSequence("abcd", "");
+		
+		System.out.println();
+		System.out.println("Print SubSequences With Ascii ================>");
+		printSubSequenceWithAscii("ab", "");
+		
+		System.out.println();
+		System.out.println("Print SubSequences With Ascii ================>");
+		printSubSequenceWithAscii("abc", "");
+	}
+
+	private static void printSubSequenceWithAscii(String str, String result) {
+		
+		if(str.length()==0) {
+			System.out.print(result + ", ");
+			return;
+		}
+		
+		char c = str.charAt(0);
+		printSubSequenceWithAscii(str.substring(1), result);
+		printSubSequenceWithAscii(str.substring(1), result + c);
+		printSubSequenceWithAscii(str.substring(1), result + (int)c);
+		
+	}
+
+	private static void printSubSequence(String str, String result) {
+		
+		if(str.length()==0) {
+			System.out.print(result + ", ");
+			return;
+		}
+		
+		char c = str.charAt(0);
+		printSubSequence(str.substring(1), result);
+		printSubSequence(str.substring(1), result + c);
+		
 	}
 
 	private static ArrayList<String> getSubSequence(String str) {
@@ -62,5 +104,7 @@ public class SubSequence {
 		result.addAll(subSequence.stream().map(s -> ascii + s).toList());
 		return result;
 	}
+	
+	
 
 }

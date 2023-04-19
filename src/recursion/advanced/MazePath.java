@@ -1,4 +1,4 @@
-package recursionGet;
+package recursion.advanced;
 
 import java.util.ArrayList;
 
@@ -16,6 +16,45 @@ public class MazePath {
 
 		// diagonal move also
 		System.out.println(getMazePathDiag(3, 0, 0));
+
+		System.out.println();
+		System.out.println("Print MazePath =>");
+		printMazePath(0, 0, 2, 2, "");
+
+		System.out.println();
+		System.out.println("Print MazePath With Diaglonal =>");
+		printMazePathWithDiag(0, 0, 2, 2, "");
+
+	}
+
+	private static void printMazePathWithDiag(int x, int y, int a, int b, String result) {
+
+		if (x > a || y > b) {
+			return;
+		}
+
+		if (x == a && y == b) {
+			System.out.print(result + ", ");
+		}
+
+		printMazePathWithDiag(x + 1, y, a, b, result + "H");
+		printMazePathWithDiag(x, y + 1, a, b, result + "V");
+		printMazePathWithDiag(x + 1, y + 1, a, b, result + "D");
+
+	}
+
+	private static void printMazePath(int x, int y, int a, int b, String result) {
+
+		if (x > a || y > b) {
+			return;
+		}
+
+		if (x == a && y == b) {
+			System.out.print(result + ", ");
+		}
+
+		printMazePath(x + 1, y, a, b, result + "H");
+		printMazePath(x, y + 1, a, b, result + "V");
 
 	}
 

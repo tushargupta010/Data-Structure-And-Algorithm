@@ -1,4 +1,4 @@
-package recursionGet;
+package recursion.advanced;
 
 import java.util.ArrayList;
 
@@ -10,6 +10,29 @@ public class Permutation {
 		System.out.println(getPermutation("ab"));
 		System.out.println(getPermutation("abc"));
 		System.out.println(getPermutation("abcd"));
+
+		System.out.println("Print Permutation =====>");
+		System.out.println();
+		printPermutation("a", "");
+		System.out.println();
+		printPermutation("ab", "");
+		System.out.println();
+		printPermutation("abc", "");
+		System.out.println();
+		printPermutation("abcd", "");
+
+	}
+
+	private static void printPermutation(String str, String result) {
+
+		if (str.length() == 0) {
+			System.out.print(result + ", ");
+			return;
+		}
+
+		for (int i = 0; i < str.length(); i++) {
+			printPermutation(str.substring(0, i) + str.substring(i + 1), result + str.charAt(i));
+		}
 
 	}
 
